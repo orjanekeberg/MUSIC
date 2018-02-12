@@ -206,7 +206,7 @@ namespace MUSIC {
         if (!config.is_open ())
           {
             std::ostringstream oss;
-            oss << "MUSIC: Couldn't open configuration file: " << filename;
+            oss << "MUSIC: Couldn't open configuration file: " << filename << '\n';
             error0 (oss.str ());
           }
 
@@ -394,6 +394,13 @@ namespace MUSIC {
   
   bool
   Setup::config (string var, double* result)
+  {
+    return config_->lookup (var, result);
+  }
+
+
+  bool
+  Setup::config (string var, bool* result)
   {
     return config_->lookup (var, result);
   }
